@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pg模拟器 · 日常信息参考</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fdf2e9 0%, #fce4d6 60%, #f5d0b8 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            line-height: 1.6;
+            color: #3e2e22;
+        }
+
+        .page-wrap {
+            max-width: 1080px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* 主卡片容器 */
+        .card-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(2px);
+            border-radius: 36px;
+            box-shadow: 0 12px 28px rgba(140, 80, 40, 0.12), 0 4px 12px rgba(0, 0, 0, 0.04);
+            padding: 2.2rem 2.6rem;
+            transition: box-shadow 0.25s ease;
+            border: 1px solid rgba(255, 245, 235, 0.5);
+        }
+
+        .card:hover {
+            box-shadow: 0 20px 36px rgba(160, 90, 50, 0.16);
+        }
+
+        /* Hero 区域 */
+        .hero {
+            text-align: center;
+            padding: 2.5rem 1.2rem 1.6rem;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            background: linear-gradient(to right, #7f4d2e, #b47a56);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .sub {
+            font-size: 1.2rem;
+            color: #6b4c36;
+            background: #f7e9df;
+            display: inline-block;
+            padding: 0.2rem 1.4rem;
+            border-radius: 40px;
+            margin-top: 0.2rem;
+            backdrop-filter: blur(2px);
+        }
+
+        .hero p {
+            margin-top: 1.5rem;
+            max-width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.04rem;
+            color: #4d3829;
+        }
+
+        .hero .tagline {
+            font-size: 0.95rem;
+            background: #f6e1d2;
+            width: fit-content;
+            margin: 1.5rem auto 0;
+            padding: 0.3rem 1.8rem;
+            border-radius: 60px;
+            color: #573d2b;
+            border: 1px solid #e7cfbb;
+        }
+
+        /* 优势区 — 三栏网格 */
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.8rem;
+            margin-top: 0.4rem;
+        }
+
+        .advantage-item {
+            background: #fffcf8;
+            padding: 1.6rem 1.4rem;
+            border-radius: 28px;
+            border: 1px solid #f0ddd0;
+            transition: transform 0.15s ease;
+        }
+
+        .advantage-item:hover {
+            transform: translateY(-3px);
+            background: #fffbf6;
+        }
+
+        .advantage-item h3 {
+            font-size: 1.2rem;
+            color: #7f4d2e;
+            margin-bottom: 0.6rem;
+            border-left: 4px solid #caa282;
+            padding-left: 0.75rem;
+        }
+
+        .advantage-item p {
+            font-size: 0.95rem;
+            color: #4d392c;
+        }
+
+        /* 说明区 */
+        .expo {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .expo-text {
+            flex: 2;
+            min-width: 260px;
+        }
+
+        .expo-text h2 {
+            font-size: 1.6rem;
+            color: #6f462c;
+            margin-bottom: 0.6rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .expo-text p {
+            margin-bottom: 1rem;
+        }
+
+        .expo-highlight {
+            flex: 1.2;
+            min-width: 200px;
+            background: #f6e4d6;
+            border-radius: 32px;
+            padding: 1.4rem 1.6rem;
+            border: 1px solid #edd7c5;
+        }
+
+        .expo-highlight p {
+            font-size: 0.98rem;
+        }
+
+        .expo-highlight strong {
+            color: #704528;
+        }
+
+        .link-natural {
+            color: #9b623b;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid #e3cabb;
+            transition: border 0.15s, color 0.15s;
+        }
+
+        .link-natural:hover {
+            color: #5d3a24;
+            border-bottom-color: #b2805e;
+        }
+
+        /* FAQ 摘要 */
+        .faq-short {
+            margin-top: 0.8rem;
+        }
+
+        .faq-short h2 {
+            font-size: 1.4rem;
+            color: #6f462c;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e6d2c1;
+            padding: 1rem 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #583d2b;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-a {
+            color: #4d3a2d;
+            padding-left: 0.5rem;
+        }
+
+        /* 底部 */
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #6c5442;
+        }
+
+        .footer-links a {
+            color: #7f553a;
+            text-decoration: none;
+            border-bottom: 1px dotted #cfb6a2;
+            transition: 0.15s;
+        }
+
+        .footer-links a:hover {
+            color: #422f22;
+            border-bottom-style: solid;
+        }
+
+        .footer-meta {
+            font-size: 0.8rem;
+            color: #7c6656;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 640px) {
+            .card {
+                padding: 1.6rem 1.2rem;
+                border-radius: 28px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .sub {
+                font-size: 1rem;
+            }
+
+            .expo {
+                flex-direction: column;
+            }
+
+            .advantages-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 1.2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrap">
+        <div class="card-group">
+
+            <!-- HERO -->
+            <div class="card hero">
+                <h1>pg模拟器 · 日常对照</h1>
+                <div class="sub">查询 · 对照 · 延伸阅读</div>
+                <p>
+                    记录与参考——从配置说明到场景对比，把常用信息整理成可翻阅的笔记。
+                    模拟环境里保持一致的观察习惯，能帮你更快找到需要的内容。
+                </p>
+                <div class="tagline">一个偏向生活化的信息卡片页</div>
+            </div>
+
+            <!-- 优势区  -->
+            <div class="card">
+                <div class="advantages-grid">
+                    <div class="advantage-item">
+                        <h3>查阅快捷</h3>
+                        <p>将零散知识归类整理，日常随手翻看，比临时搜索更省时间。</p>
+                    </div>
+                    <div class="advantage-item">
+                        <h3>场景对照</h3>
+                        <p>操作习惯、界面差异、版本说明——并排对照，减少遗漏。</p>
+                    </div>
+                    <div class="advantage-item">
+                        <h3>延伸阅读</h3>
+                        <p>每段记录都留有链接，方便你顺着线索深入了解更多细节。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 说明区 + 嵌入式链接 -->
+            <div class="card">
+                <div class="expo">
+                    <div class="expo-text">
+                        <h2>从一份参考笔记开始</h2>
+                        <p>
+                            不管是初次接触还是想更新认知，信息整理都讲究「有条理地存放」。
+                            日常使用 <a href="https://space-main-pg.com" class="link-natural">pg模拟器</a> 
+                            时，我会把常用参数、典型配置和注意事项记录下来，方便自己随时回看。
+                        </p>
+                        <p>
+                            页面里提到的环境设定、版本对照都基于实际体验整理，
+                            没有夸大或虚假描述。你可以把它当作一份带链接的备忘录，
+                            需要时直接点开延伸阅读就好。
+                        </p>
+                    </div>
+                    <div class="expo-highlight">
+                        <p><strong>一个小习惯</strong><br>
+                        遇到相似功能时先翻翻对照区，
+                        再决定用哪种方式。模拟场景下的记录，
+                        往往能帮你省下重复验证的时间。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 摘要 -->
+            <div class="card faq-short">
+                <h2>常见疑问 · 摘要</h2>
+                <div class="faq-item">
+                    <div class="faq-q">问：这些信息多久更新一次？</div>
+                    <div class="faq-a">随版本及个人使用节奏补充，主要关注稳定版本的变化。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">问：可以自行对照其他资料吗？</div>
+                    <div class="faq-a">当然，这份笔记就是为对照设计的，鼓励结合官方文档一起看。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">问：内容是否涵盖全部功能？</div>
+                    <div class="faq-a">只记录常用部分，完整功能请参考官方说明或实际环境体验。</div>
+                </div>
+            </div>
+
+            <!-- 底部链接 -->
+            <div class="card" style="padding: 1.4rem 2rem;">
+                <div class="footer-links">
+                    <span>
+                        <a href="https://space-main-pg.com" class="link-natural">pg模拟器</a> 
+                        · 信息参考页
+                    </span>
+                    <span class="footer-meta">
+                        &copy; 日常整理 · 非官方页面
+                    </span>
+                </div>
+            </div>
+
+        </div> <!-- card-group -->
+    </div> <!-- page-wrap -->
+</body>
+</html>
